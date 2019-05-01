@@ -11,11 +11,11 @@
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" type="text/css" href="agenda.css" />
+    <link rel="stylesheet" type="text/css" href="index.css" />
   </head>
   <body>
     <div class="jumbotron">
-      <h1>Talleres</h1>
+      <h1>Talleres del congreso</h1>
       <p>Registro de talleres 2019-2020</p>
     </div>
     <div class="container-fluid">
@@ -24,6 +24,18 @@
         <div class="col-md-4 mb-5">
           <div class="row">
             <form id="form" class="col-12 needs-validation" novalidate>
+              <div class="form-group">
+                <label for="ID">ID de taller</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="ID"
+                  placeholder="123"
+                  required
+                />
+                <div class="valid-feedback">Correcto!</div>
+                <div class="invalid-feedback">Este campo es obligatorio</div>
+              </div>
               <div class="form-group">
                 <label for="name">Nombre del taller</label>
                 <input
@@ -67,15 +79,11 @@
           </div>
           <!-- Tabla pequeña -->
           <div class="row my-3">
-            <table id="info" class="table ml-2">
+            <table id="info" class="table ml-2 border">
               <tbody>
                 <tr>
                   <td>Número de Talleres:</td>
                   <td id="numEmployees"></td>
-                </tr>
-                <tr>
-                  <td>Promedio edad:</td>
-                  <td id="averageAge"></td>
                 </tr>
               </tbody>
             </table>
@@ -83,15 +91,15 @@
         </div>
         <!-- Tabla -->
         <div class="col-md-8">
-          <table id="agenda" class="table">
+          <table id="agenda" class="table border">
             <thead>
               <tr>
-                <th>Nombre de taller</th>
-                <th>Fecha de Inicio</th>
-                <th>Fecha de Termino</th>
-                <th>Edad</th>
-                <th></th>
-                <th></th>
+                <th class="border border-success">ID taller</th>
+                <th class="border border-success">Nombre de taller</th>
+                <th class="border border-success">Fecha de Inicio</th>
+                <th class="border border-success">Fecha de Termino</th>
+                <th class="border border-light"></th>
+                <th class="border border-light"></th>
               </tr>
             </thead>
             <tbody></tbody>
