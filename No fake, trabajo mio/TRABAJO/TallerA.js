@@ -79,7 +79,7 @@ _addEditDeleteToRow(row, courses){
 let btnEdit = document.createElement("input");
 btnEdit.type = "button";
 btnEdit.value = "Editar";
-btnEdit.className = "btn btn-success"
+btnEdit.className = "btn btn-success";
 //llamar a un metodo 
 /*btnEdit.addEventListener("click", ()=>{
     this._editRow(row, courses);
@@ -88,10 +88,17 @@ btnEdit.className = "btn btn-success"
 let btnDelete = document.createElement("input");
 btnDelete.type = "button";
 btnDelete.value = "Eliminar";
-btnDelete.className = "btn btn-danger"
+btnDelete.className = "btn btn-danger";
 
-row.cells[4].appendChild(btnEdit);
-row.cells[5].appendChild(btnDelete);
+let btnInPerson = document.createElement("input");
+btnInPerson.type = "button";
+btnInPerson.value = "Ingresar Part.";
+btnInPerson.className = "btn btn-warning";
+btnInPerson.onclick= "window.location.href='./RegistroParticipantes.html'";
+
+row.cells[6].appendChild(btnEdit);
+row.cells[7].appendChild(btnDelete);
+row.cells[8].appendChild(btnInPerson);
 }
 
 _addToTable(courses) {
@@ -101,13 +108,18 @@ let cellID = row.insertCell(0);
 let cellName = row.insertCell(1);
 let cellFechaInicio = row.insertCell(2);
 let cellfechaFin = row.insertCell(3);
-row.insertCell(4);
-row.insertCell(5);
+let cellCapacidad = row.insertCell(4);
+let cellDuracion= row.insertCell(5);
+row.insertCell(6);
+row.insertCell(7);
+row.insertCell(8);
 
 cellID.innerHTML= courses.ID;
 cellName.innerHTML = courses.name;
 cellFechaInicio.innerHTML = courses.getFechaInicialAsString();
 cellfechaFin.innerHTML = courses.getFechaFinalAsString();
+cellCapacidad.innerHTML = courses.capacidad;
+cellDuracion.innerHTML = courses.duracion;
 
 //llamar a los botones
 this._addEditDeleteToRow(row, courses);
@@ -120,7 +132,9 @@ let objCourse = {
     ID: courses.ID,
     name: courses.name,
     fechaInicio: courses.fechaInicio,
-    fechaFin: courses.fechaFin
+    fechaFin: courses.fechaFin,
+    capacidad: courses.capacidad,
+    duracion: courses.duracion
 };
 
 this._talleres.push(objCourse);

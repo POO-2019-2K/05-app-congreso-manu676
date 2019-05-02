@@ -72,6 +72,30 @@
                 <div class="valid-feedback">Correcto!</div>
                 <div class="invalid-feedback">Introduzca una fecha válida</div>
               </div>
+              <div class="form-group">
+                <label for="cap">Capacidad del taller</label>
+                <input 
+                type="number" 
+                class="form-control" 
+                id="cap"
+                placeholder="25"
+                required 
+                />
+                <div class="valid-feedback">Correcto!</div>
+                <div class="invalid-feedback">Introduzca una cantidad correcta</div>
+              </div>
+              <div class="form-group">
+                <label for="tiempo">Duración</label>
+                <input 
+                type="number" 
+                class="form-control" 
+                id="tiempo"
+                placeholder="5 horas"
+                required 
+                />
+                <div class="valid-feedback">Correcto!</div>
+                <div class="invalid-feedback">Introduzca una tiempo válida</div>
+              </div>
               <button id="btnAdd" type="button" class="btn btn-primary">
                 Agregar
               </button>
@@ -98,6 +122,9 @@
                 <th class="border border-success">Nombre de taller</th>
                 <th class="border border-success">Fecha de Inicio</th>
                 <th class="border border-success">Fecha de Termino</th>
+                <th class="border border-success">Capacidad de participantes</th>
+                <th class="border border-success">Duración (horas)</th>
+                <th class="border border-light"></th>
                 <th class="border border-light"></th>
                 <th class="border border-light"></th>
               </tr>

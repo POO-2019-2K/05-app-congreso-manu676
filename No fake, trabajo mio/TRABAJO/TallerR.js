@@ -4,6 +4,8 @@ export default class Courses {
     this._name = courses.name.toUpperCase();
     this._fechaInicio = new Date (courses.fechaInicio);
     this._fechaFin = new Date(courses.fechaFin);
+    this._capacidad = courses.capacidad;
+    this._duracion= courses.duracion;
     this._months = [
         "Ene",
         "Feb",
@@ -33,6 +35,12 @@ get fechaInicio() {
 
 get fechaFin() {
     return this._fechaFin;
+}
+get capacidad() {
+    return this._capacidad;
+}
+get duracion() {
+    return this._duracion;
 }
 _getNumberAs2Digits(number){
     if (number < 10){

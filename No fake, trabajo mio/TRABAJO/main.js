@@ -24,11 +24,16 @@ document.querySelector("#btnAdd").addEventListener("click", () => {
 
     let fechaFin = new Date(fechafinal[0], fechafinal[1] - 1, fechafinal[2]);
 
+    let capacidad = document.querySelector("#cap").value;
+    let duracion = document.querySelector("#tiempo").value;
+
     let objCourses = {
         ID: ID,
         name: name,
         fechaInicio: fechaInicio,
-        fechaFin: fechaFin
+        fechaFin: fechaFin,
+        capacidad: capacidad,
+        duracion: duracion
     };
 
     let course = new Courses(objCourses);
