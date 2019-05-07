@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Talleres</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" type="text/css" href="index.css" />
+  </head>
+  <body>
+    <div class="jumbotron">
+      <h1>Talleres del congreso</h1>
+      <p>Registro de talleres 2019-2020</p>
+    </div>
+    <div class="container-fluid">
+      <div class="row">
+        <!-- Formulario -->
+        <div class="col-md-4 mb-5">
+          <div class="row">
+            <form id="form" class="col-12 needs-validation" novalidate>
+              <div class="form-group">
+                <label for="ID">ID de taller</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="ID"
+                  placeholder="123"
+                  required
+                />
+                <div class="valid-feedback">Correcto!</div>
+                <div class="invalid-feedback">Este campo es obligatorio</div>
+              </div>
+              <div class="form-group">
+                <label for="name">Nombre del taller</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="name"
+                  placeholder="Desarrollo emprendedor"
+                  required
+                />
+                <div class="valid-feedback">Correcto!</div>
+                <div class="invalid-feedback">Este campo es obligatorio</div>
+              </div>
+              <div class="form-group">
+                <label for="FechaI">Fecha Inicio</label>
+                <input
+                  type="date"
+                  class="form-control"
+                  id="fechaI"
+                  placeholder="23/05/2019"
+                  required
+                />
+                <div class="valid-feedback">Correcto!</div>
+                <div class="invalid-feedback">Introduzca una fecha valida</div>
+              </div>
+              <div class="form-group">
+                <label for="fechaF">Fecha de Termino/Cierre</label>
+                <input 
+                type="date" 
+                class="form-control" 
+                id="fechaF"
+                placeholder="23/06/2019"
+                required 
+                />
+                <div class="valid-feedback">Correcto!</div>
+                <div class="invalid-feedback">Introduzca una fecha válida</div>
+              </div>
+              <div class="form-group">
+                <label for="cap">Capacidad del taller</label>
+                <input 
+                type="number" 
+                class="form-control" 
+                id="cap"
+                placeholder="25"
+                required 
+                />
+                <div class="valid-feedback">Correcto!</div>
+                <div class="invalid-feedback">Introduzca una cantidad correcta</div>
+              </div>
+              <div class="form-group">
+                <label for="tiempo">Duración</label>
+                <input 
+                type="number" 
+                class="form-control" 
+                id="tiempo"
+                placeholder="5 horas"
+                required 
+                />
+                <div class="valid-feedback">Correcto!</div>
+                <div class="invalid-feedback">Introduzca una tiempo válida</div>
+              </div>
+              <button id="btnAdd" type="button" class="btn btn-primary">
+                Agregar
+              </button>
+            </form>
+          </div>
+          <!-- Tabla pequeña -->
+          <div class="row my-3">
+            <table id="info" class="table ml-2 border">
+              <tbody>
+                <tr>
+                  <td>Número de Talleres:</td>
+                  <td id="numEmployees"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <!-- Tabla -->
+        <div class="col-md-8">
+          <table id="agenda" class="table border">
+            <thead>
+              <tr>
+                <th class="border border-success">ID taller</th>
+                <th class="border border-success">Nombre de taller</th>
+                <th class="border border-success">Fecha de Inicio</th>
+                <th class="border border-success">Fecha de Termino</th>
+                <th class="border border-success">Capacidad de participantes</th>
+                <th class="border border-success">Duración (horas)</th>
+                <th class="border border-light"></th>
+                <th class="border border-light"></th>
+                <th class="border border-light"></th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+      <!-- Row -->
+    </div>
+    <!-- Container -->
+
+    <script src="./main.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
