@@ -42,22 +42,31 @@ get capacidad() {
 get duracion() {
     return this._duracion;
 }
-/*_getNumberAs2Digits(number){
+
+_getNumberAs2Digits(number){
     if (number < 10){
     //se convierte en string
     return "0"+number;
     } 
     return number;
-}*/
+}
 
-//getBirthdayForDate(){
+getFechaInicioForDate(){
     //descomposicion
-    //let {birthday} = this;
-    //let date = birthday.getFullYear() + "-" + 
-    //this._getNumberAs2Digits(birthday.getMonth()+1) + "-" +
-    //this._getNumberAs2Digits(birthday.getDate());
-    //return date;
-//}
+    let {fechaInicio} = this;
+    let date = fechaInicio.getFullYear() + "-" + 
+    this._getNumberAs2Digits(fechaInicio.getMonth()+1) + "-" +
+    this._getNumberAs2Digits(fechaInicio.getDate());
+    return date;
+}
+getFechaFinForDate(){
+    //descomposicion
+    let {fechaFin} = this;
+    let date = fechaFin.getFullYear() + "-" + 
+    this._getNumberAs2Digits(fechaFin.getMonth()+1) + "-" +
+    this._getNumberAs2Digits(fechaFin.getDate());
+    return date;
+}
 getFechaInicialAsString() {
     let date =
     this._fechaInicio.getDate() +

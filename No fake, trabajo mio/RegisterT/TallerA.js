@@ -7,7 +7,6 @@ this._tableInfo = tableInfo;
 this._numTalleres = 0;
 
 this._talleres= [];
-this._participante = [];
 
 //localStorage.removeItem("Talleres");
 this._initTables();
@@ -25,42 +24,80 @@ lsTalleres.forEach((e, index) => {
     this._addToTable(new Courses(e));
 });
 }
+_cancelEdit(row, courses){
+row.cells[0].innerHTML = courses.ID;    
+row.cells[1].innerHTML = courses.name;
+row.cells[2].innerHTML= courses.getFechaInicialAsString();
+row.cells[3].innerHTML= courses.getFechaInicialAsString();
+row.cells[4].innerHTML= courses.capacidad;
+row.cells[5].innerHTML = courses.duracion;
+this._addEditDeleteToRow(row, courses);
+}
+_saveEdit(row, courses,newCourses){
+//Buscar su ubicación 
+let pos = this._findID(courses.ID);
+this._talleres[pos] = newCourses;
+localStorage.setItem("talleres", JSON.stringify(this._talleres));
+
+this._cancelEdit(row, new Courses(newCourses));
+}
+
 //Cambiar la información de los campos, y los botenes de guardar y de cancelar
-/*_editRow(row,employee){
+_editRow(row, courses){
+//ID
+let ID = document.createElement("input");
+ID.type= "text";
+ID.value= courses.name;
+row.cells[1].innerHTML= "";
+row.cells[1].appendChild(ID);
 //Nombre
-let iName = document.createElement("input");
-iName.type= "text";
-iName.value= employee.name;
-row.cells[0].innerHTML= "";
-row.cells[0].appendChild(iName);
-//email
-let iEmail = document.createElement("input");
-iEmail.type="email";
-iEmail.value= employee.email;
-row.cells[1].innerHTML="";
-row.cells[1].appendChild(iEmail);
-//Cumpleaños
-let iBirthday = document.createElement("input");
-iBirthday.type="date";
-iBirthday.value= employee.getBirthdayForDate();
+let iNombre = document.createElement("input");
+iNombre.type= "text";
+iNombre.value= courses.name;
+row.cells[1].innerHTML= "";
+row.cells[1].appendChild(iNombre);
+//fecha Inicio
+let fechaI = document.createElement("input");
+fechaI.type="date";
+fechaI.value= courses.getFechaInicioForDate();
 row.cells[2].innerHTML="";
-row.cells[2].appendChild(iBirthday);
+row.cells[2].appendChild(fechaI);
+//Fecha Fin
+let fechaF = document.createElement("input");
+fechaF.type="date";
+fechaF.value= courses.getFechaFinForDate();
+row.cells[3].innerHTML="";
+row.cells[3].appendChild(fechaF);
+//Cupos
+let iCupo = document.createElement("input");
+iCupo.type= "number";
+iCupo.value= courses.capacidad;
+row.cells[4].innerHTML= "";
+row.cells[4].appendChild(iCupo);
+//Duracion
+let iDuracion = document.createElement("input");
+iDuracion.type= "number";
+iDuracion.value= courses.duracion;
+row.cells[5].innerHTML= "";
+row.cells[5].appendChild(iDuracion);
 //crear boton de salvar
 let btnSave= document.createElement("input");
 btnSave.type = "button";
 btnSave.value = "Grabar";
 btnSave.className= "btn btn-success"
-row.cells[4].innerHTML="";
-row.cells[4].appendChild(btnSave);
+row.cells[6].innerHTML="";
+row.cells[6].appendChild(btnSave);
 
 //evento de guardar
 btnSave.addEventListener("click",()=>{
-    let newEmployee = {
-    name = iName.value,
-    email = iEmail.value,
-    birthday = iBirthday.value
+    let newCourses ={
+    name : iNombre.value,
+    fechaInicio : fechaI.value,
+    fechaFin : fechaF.value,
+    capacidad : iCupo.value,
+    duracion : iDuracion.value
     };
-    this._saveEdit(row, employee, newEmployee);
+    this._saveEdit(row, courses, newCourses);
 })
 
 //crear boton de cancelar
@@ -68,17 +105,13 @@ let btnCancel= document.createElement("input");
 btnCancel.type = "button";
 btnCancel.value = "Cancelar";
 btnCancel.className= "btn btn-danger"
-row.cells[5].innerHTML="";
-row.cells[5].appendChild(btnCancel);
+row.cells[7].innerHTML="";
+row.cells[7].appendChild(btnCancel);
 //evento de cancelar
 btnCancel.addEventListener("click", () =>{
-    this._cancelEdit(row, employee);
-})
-}*/
-_ingresarParticipante(){
- let agregar = new Array (this._participante)
- 
-}   
+    this._cancelEdit(row, courses);
+})  
+}  
 
 _addEditDeleteToRow(row, courses){
 let btnEdit = document.createElement("input");
@@ -86,9 +119,9 @@ btnEdit.type = "button";
 btnEdit.value = "Editar";
 btnEdit.className = "btn btn-success";
 //llamar a un metodo 
-/*btnEdit.addEventListener("click", ()=>{
+btnEdit.addEventListener("click", ()=>{
     this._editRow(row, courses);
-})*/
+})
 
 let btnDelete = document.createElement("input");
 btnDelete.type = "button";
