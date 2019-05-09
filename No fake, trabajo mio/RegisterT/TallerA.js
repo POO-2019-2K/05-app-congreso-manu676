@@ -6,7 +6,10 @@ this._tableAgenda = tableAgenda;
 this._tableInfo = tableInfo;
 this._numTalleres = 0;
 
+//arrat pra localstorage "Talleres"
 this._talleres= [];
+//array para enviar a localstorage "parti"
+this._parti=[];
 
 //localStorage.removeItem("Talleres");
 this._initTables();
@@ -80,7 +83,7 @@ iDuracion.type= "number";
 iDuracion.value= courses.duracion;
 row.cells[5].innerHTML= "";
 row.cells[5].appendChild(iDuracion);
-//crear boton de salvar
+//crear boton de guardar/salvar
 let btnSave= document.createElement("input");
 btnSave.type = "button";
 btnSave.value = "Grabar";
@@ -133,9 +136,14 @@ btnInPerson.type = "button";
 btnInPerson.value = "Ingresar Part.";
 btnInPerson.className = "btn btn-warning";
 btnInPerson.addEventListener("click", ()=>{ 
-    localStorage.setItem("idTaller", row.cells[0].innerHTML);
-    localStorage.setItem("nTaller", row.cells[1].innerHTML);
-
+    //localStorage.setItem("idTaller", row.cells[0].innerHTML);
+    //localStorage.setItem("nTaller", row.cells[1].innerHTML);
+    let objPar = {
+        name: courses.name,
+    };
+    this._parti.push(objPar);
+    localStorage.setItem("participantes", JSON.stringify(this._parti));
+    
     window.location.href='RegistroP/RegistroParticipantes.html';
 })
 

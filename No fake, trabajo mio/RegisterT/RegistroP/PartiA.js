@@ -5,21 +5,34 @@ constructor(tableAgenda, tableInfo) {
 this._tableAgenda = tableAgenda;
 this._tableInfo = tableInfo;
 this._numPersonas = 0;
+//para la localstarage de taller "participantes"
+this._taller = 0;
 
 this._participantes= [];
 
-//localStorage.removeItem("Participantes");
+//localStorage.removeItem("parti");
 this._initTables();
 }
-
 _initTables() {
-let lsPeople = JSON.parse(localStorage.getItem("Participantes"));
+    //traer el localstorage "participantes" del otro jscrip
+    let lstaller = JSON.parse(localStorage.getItem("participantes"));
+if (lstaller === null) {
+    return;
+}
+//busca el nombre del taller
+lstaller.forEach((e, index) => {
+this._taller=  e.name; });
+
+let lsPeople = JSON.parse(localStorage.getItem("parti"));
 if (lsPeople === null) {
     return;
 }
 lsPeople.forEach((e, index) => {
+    if(this._taller === e.name){
     e.cumpleaños = new Date(e.cumpleaños);
     this._addToTable(new People(e));
+    }
+    return;
 });
 }
 //Cambiar la información de los campos, y los botenes de guardar y de cancelar
@@ -88,8 +101,8 @@ btnDelete.type = "button";
 btnDelete.value = "Eliminar";
 btnDelete.className = "btn btn-danger";
 
-row.cells[5].appendChild(btnEdit);
-row.cells[6].appendChild(btnDelete);
+row.cells[3].appendChild(btnEdit);
+row.cells[4].appendChild(btnDelete);
 }
 
 _addToTable(people) {
@@ -98,10 +111,8 @@ let row = this._tableAgenda.insertRow(-1);
 let cellName = row.insertCell(0);
 let cellEmail= row.insertCell(1);
 let cellCumpleaños = row.insertCell(2);
-let cellIDtaller = row.insertCell(3);
-let cellNombretaller = row.insertCell(4);
-row.insertCell(5);
-row.insertCell(6);
+row.insertCell(3);
+row.insertCell(4);
 
 cellName.innerHTML = people.name;
 cellEmail.innerHTML = people.email;
@@ -115,6 +126,7 @@ this._numPersonas++; // this._numPersonas = this._numPersonas + 1
 this._tableInfo.rows[0].cells[1].innerHTML = this._numPersonas;
 
 let objPersonas = {
+    taller: this._taller,
     name: people.name,
     cumpleaños: people.cumpleaños,
     email: people.email
@@ -147,6 +159,6 @@ if (found >= 0){
     return;
 }
 this._addToTable(people);
-localStorage.setItem("Participantes", JSON.stringify(this._participantes));
+localStorage.setItem("parti", JSON.stringify(this._participantes));
 }
 }
