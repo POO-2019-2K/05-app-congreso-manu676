@@ -133,8 +133,8 @@ btnInPerson.type = "button";
 btnInPerson.value = "Ingresar Part.";
 btnInPerson.className = "btn btn-warning";
 btnInPerson.addEventListener("click", ()=>{ 
-    localStorage.setItem("taller", row.cells[0].innerHTML);
-
+    localStorage.setItem("idTaller", row.cells[0].innerHTML);
+    localStorage.setItem("nTaller", row.cells[1].innerHTML);
 
     window.location.href='RegistroP/RegistroParticipantes.html';
 })

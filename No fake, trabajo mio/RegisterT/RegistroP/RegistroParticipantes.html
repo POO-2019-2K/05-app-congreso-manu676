@@ -21,7 +21,7 @@
 <div class="container-fluid">
     <div class="row">
     <!-- Formulario -->
-    <div class="col-md-4 mb-5">
+    <div class="col-md-3 mb-5">
         <div class="row">
         <form id="form" class="col-12 needs-validation" novalidate>
             <div class="form-group">
@@ -60,9 +60,10 @@
             <div class="valid-feedback">Correcto!</div>
             <div class="invalid-feedback">Introduzca una fecha válida</div>
             </div>
-            <button id="btnAdd" type="button" class="btn btn-primary">
+            <button id="btnAdd" type="button" class="btn btn-primary ml-4">
             Agregar
             </button>
+            <button id="volver" type="button" class="btn btn-secondary" src="../index.html">Volver a los talleres</button>
         </form>
         </div>
         <!-- Tabla pequeña -->
@@ -78,13 +79,15 @@
         </div>
     </div>
     <!-- Tabla -->
-    <div class="col-md-8">
+    <div class="col-md-9">
         <table id="agenda" class="table border">
         <thead>
             <tr>
             <th class="border border-success">Nombre del participante</th>
             <th class="border border-success">Correo Electronico</th>
             <th class="border border-success">Fecha de nacimiento</th>
+            <th class="border border-success">ID del taller</th>
+            <th class="border border-success">Nombre del taller</th>
             <th class="border border-light"></th>
             <th class="border border-light"></th>
             </tr>

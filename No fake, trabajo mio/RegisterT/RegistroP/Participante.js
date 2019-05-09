@@ -3,7 +3,8 @@ import People from "./PartiR.js";
 
 class Main {
 constructor() {
-    console.log(localStorage.getItem("taller"))
+    console.log(localStorage.getItem("idTaller"));
+    console.log(localStorage.getItem("nTaller"));
 let agenda = new RegisterP(
     document.querySelector("#agenda"),
     document.querySelector("#info")
@@ -20,6 +21,7 @@ document.querySelector("#btnAdd").addEventListener("click", () => {
     let cumpleaños = new Date(fechaC[0], fechaC[1] - 1, fechaC[2]);
 
     let email = document.querySelector("#email").value;
+    
 
     let objPersonas = {
         name: name,

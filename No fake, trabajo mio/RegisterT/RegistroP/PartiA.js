@@ -88,8 +88,8 @@ btnDelete.type = "button";
 btnDelete.value = "Eliminar";
 btnDelete.className = "btn btn-danger";
 
-row.cells[3].appendChild(btnEdit);
-row.cells[4].appendChild(btnDelete);
+row.cells[5].appendChild(btnEdit);
+row.cells[6].appendChild(btnDelete);
 }
 
 _addToTable(people) {
@@ -98,8 +98,10 @@ let row = this._tableAgenda.insertRow(-1);
 let cellName = row.insertCell(0);
 let cellEmail= row.insertCell(1);
 let cellCumpleaños = row.insertCell(2);
-row.insertCell(3);
-row.insertCell(4);
+let cellIDtaller = row.insertCell(3);
+let cellNombretaller = row.insertCell(4);
+row.insertCell(5);
+row.insertCell(6);
 
 cellName.innerHTML = people.name;
 cellEmail.innerHTML = people.email;
