@@ -34,13 +34,16 @@ row.cells[2].innerHTML= courses.getFechaInicialAsString();
 row.cells[3].innerHTML= courses.getFechaInicialAsString();
 row.cells[4].innerHTML= courses.capacidad;
 row.cells[5].innerHTML = courses.duracion;
+row.cells[6].innerHTML = "";
+row.cells[7].innerHTML = "";
+row.cells[8].innerHTML = "";
 this._addEditDeleteToRow(row, courses);
 }
-_saveEdit(row, courses,newCourses){
+_saveEdit(row, courses, newCourses){
 //Buscar su ubicación 
 let pos = this._findID(courses.ID);
 this._talleres[pos] = newCourses;
-localStorage.setItem("talleres", JSON.stringify(this._talleres));
+localStorage.setItem("Talleres", JSON.stringify(this._talleres));
 
 this._cancelEdit(row, new Courses(newCourses));
 }

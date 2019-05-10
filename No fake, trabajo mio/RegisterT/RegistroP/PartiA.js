@@ -7,6 +7,7 @@ this._tableInfo = tableInfo;
 this._numPersonas = 0;
 //para la localstarage de taller "participantes"
 this._taller = 0;
+this._contador = 0;
 
 this._participantes= [];
 
@@ -28,11 +29,10 @@ if (lsPeople === null) {
     return;
 }
 lsPeople.forEach((e, index) => {
-    if(this._taller === e.name){
+    
     e.cumpleaños = new Date(e.cumpleaños);
     this._addToTable(new People(e));
-    }
-    return;
+    
 });
 }
 //Cambiar la información de los campos, y los botenes de guardar y de cancelar
@@ -106,6 +106,8 @@ row.cells[4].appendChild(btnDelete);
 }
 
 _addToTable(people) {
+if(this._taller === people.taller || this._contador === 0 ){
+    this._contador++;
 let row = this._tableAgenda.insertRow(-1);
 //En la tabla grande 
 let cellName = row.insertCell(0);
@@ -118,8 +120,12 @@ cellName.innerHTML = people.name;
 cellEmail.innerHTML = people.email;
 cellCumpleaños.innerHTML = people.getAgeAsString();
 
+
+
 //llamar a los botones
 this._addEditDeleteToRow(row, people);
+
+
 
 this._numPersonas++; // this._numPersonas = this._numPersonas + 1
 
@@ -134,6 +140,9 @@ let objPersonas = {
 
 this._participantes.push(objPersonas);
 }
+return;
+}
+
 
 _findEmail(email){//encontrar el correo
 let found = -1 
