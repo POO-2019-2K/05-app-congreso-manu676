@@ -27,6 +27,23 @@ get cumpleaños(){
 get email() {
     return this._email;
 }
+_getNumberAs2Digits(number){
+    if (number < 10){
+    //se convierte en string
+    return "0"+number;
+    } 
+    return number;
+}
+
+getCumpleForDate(){
+    //descomposicion
+    let {cumpleaños} = this;
+    let date = cumpleaños.getFullYear() + "-" + 
+    this._getNumberAs2Digits(cumpleaños.getMonth()+1) + "-" +
+    this._getNumberAs2Digits(cumpleaños.getDate());
+    return date;
+}
+
 getAgeAsString() {
     let date =
     this._cumpleaños.getDate() +
