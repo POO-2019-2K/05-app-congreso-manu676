@@ -36,23 +36,23 @@ lsPeople.forEach((e, index) => {
 });
 }
 //Cambiar la información de los campos, y los botenes de guardar y de cancelar
-/*_editRow(row,employee){
+_editRow(row,people){
 //Nombre
 let iName = document.createElement("input");
 iName.type= "text";
-iName.value= employee.name;
+iName.value= people.name;
 row.cells[0].innerHTML= "";
 row.cells[0].appendChild(iName);
 //email
 let iEmail = document.createElement("input");
 iEmail.type="email";
-iEmail.value= employee.email;
+iEmail.value= people.email;
 row.cells[1].innerHTML="";
 row.cells[1].appendChild(iEmail);
 //Cumpleaños
 let iBirthday = document.createElement("input");
 iBirthday.type="date";
-iBirthday.value= employee.getBirthdayForDate();
+iBirthday.value= people.getBirthdayForDate();
 row.cells[2].innerHTML="";
 row.cells[2].appendChild(iBirthday);
 //crear boton de salvar
@@ -65,12 +65,12 @@ row.cells[4].appendChild(btnSave);
 
 //evento de guardar
 btnSave.addEventListener("click",()=>{
-    let newEmployee = {
+    let newParticipante = {
     name = iName.value,
     email = iEmail.value,
     birthday = iBirthday.value
     };
-    this._saveEdit(row, employee, newEmployee);
+    this._saveEdit(row, people, newParticipante);
 })
 
 //crear boton de cancelar
@@ -84,17 +84,13 @@ row.cells[5].appendChild(btnCancel);
 btnCancel.addEventListener("click", () =>{
     this._cancelEdit(row, employee);
 })
-}*/
+}
 
 _addEditDeleteToRow(row, people){
 let btnEdit = document.createElement("input");
 btnEdit.type = "button";
 btnEdit.value = "Editar";
 btnEdit.className = "btn btn-success";
-//llamar a un metodo 
-/*btnEdit.addEventListener("click", ()=>{
-    this._editRow(row, courses);
-})*/
 
 let btnDelete = document.createElement("input");
 btnDelete.type = "button";

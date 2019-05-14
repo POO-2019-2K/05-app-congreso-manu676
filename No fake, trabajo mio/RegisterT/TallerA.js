@@ -53,7 +53,7 @@ _editRow(row, courses){
 //ID
 let ID = document.createElement("input");
 ID.type= "text";
-ID.value= courses.name;
+ID.value= courses.ID;
 row.cells[1].innerHTML= "";
 row.cells[1].appendChild(ID);
 //Nombre
@@ -97,6 +97,7 @@ row.cells[6].appendChild(btnSave);
 //evento de guardar
 btnSave.addEventListener("click",()=>{
     let newCourses ={
+    ID : ID.value,
     name : iNombre.value,
     fechaInicio : fechaI.value,
     fechaFin : fechaF.value,
