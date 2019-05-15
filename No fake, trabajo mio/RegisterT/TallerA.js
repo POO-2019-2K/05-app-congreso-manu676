@@ -9,7 +9,7 @@ this._numTalleres = 0;
 //arrat pra localstorage "Talleres"
 this._talleres= [];
 //array para enviar a localstorage "parti"
-this._parti=[];
+this._nomTaller=[];
 
 //localStorage.removeItem("Talleres");
 this._initTables();
@@ -29,7 +29,7 @@ lsTalleres.forEach((e, index) => {
 }
 _cancelEdit(row, courses){
 row.cells[0].innerHTML = courses.ID;    
-row.cells[1].innerHTML = courses.name;
+row.cells[1].innerHTML = courses.nameT;
 row.cells[2].innerHTML= courses.getFechaInicialAsString();
 row.cells[3].innerHTML= courses.getFechaInicialAsString();
 row.cells[4].innerHTML= courses.capacidad;
@@ -59,7 +59,7 @@ row.cells[1].appendChild(ID);
 //Nombre
 let iNombre = document.createElement("input");
 iNombre.type= "text";
-iNombre.value= courses.name;
+iNombre.value= courses.nameT;
 row.cells[1].innerHTML= "";
 row.cells[1].appendChild(iNombre);
 //fecha Inicio
@@ -98,7 +98,7 @@ row.cells[6].appendChild(btnSave);
 btnSave.addEventListener("click",()=>{
     let newCourses ={
     ID : ID.value,
-    name : iNombre.value,
+    nameT : iNombre.value,
     fechaInicio : fechaI.value,
     fechaFin : fechaF.value,
     capacidad : iCupo.value,
@@ -142,11 +142,14 @@ btnInPerson.className = "btn btn-warning";
 btnInPerson.addEventListener("click", ()=>{ 
     //localStorage.setItem("idTaller", row.cells[0].innerHTML);
     //localStorage.setItem("nTaller", row.cells[1].innerHTML);
+    //this._cleaner();
+
     let objPar = {
-        name: courses.name,
+        nameT: courses.nameT,
+        capacidad : courses.capacidad,
     };
-    this._parti.push(objPar);
-    localStorage.setItem("participantes", JSON.stringify(this._parti));
+    this._nomTaller.push(objPar);
+    localStorage.setItem("nomTaller", JSON.stringify(this._nomTaller));
     
     window.location.href='RegistroP/RegistroParticipantes.html';
 })
@@ -160,7 +163,7 @@ _addToTable(courses) {
 let row = this._tableAgenda.insertRow(-1);
 //En la tabla grande 
 let cellID = row.insertCell(0);
-let cellName = row.insertCell(1);
+let cellNameT = row.insertCell(1);
 let cellFechaInicio = row.insertCell(2);
 let cellfechaFin = row.insertCell(3);
 let cellCapacidad = row.insertCell(4);
@@ -170,7 +173,7 @@ row.insertCell(7);
 row.insertCell(8);
 
 cellID.innerHTML= courses.ID;
-cellName.innerHTML = courses.name;
+cellNameT.innerHTML = courses.nameT;
 cellFechaInicio.innerHTML = courses.getFechaInicialAsString();
 cellfechaFin.innerHTML = courses.getFechaFinalAsString();
 cellCapacidad.innerHTML = courses.capacidad;
@@ -185,7 +188,7 @@ this._tableInfo.rows[0].cells[1].innerHTML = this._numTalleres;
 
 let objCourse = {
     ID: courses.ID,
-    name: courses.name,
+    nameT: courses.nameT,
     fechaInicio: courses.fechaInicio,
     fechaFin: courses.fechaFin,
     capacidad: courses.capacidad,

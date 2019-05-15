@@ -1,7 +1,7 @@
 export default class Courses {
     constructor(courses) {
     this._ID = courses.ID;
-    this._name = courses.name.toUpperCase();
+    this._nameT = courses.nameT.toUpperCase();
     this._fechaInicio = new Date (courses.fechaInicio);
     this._fechaFin = new Date(courses.fechaFin);
     this._capacidad = courses.capacidad;
@@ -25,8 +25,8 @@ get ID(){
     return this._ID
 }
 
-get name() {
-    return this._name;
+get nameT() {
+    return this._nameT;
 }
 
 get fechaInicio() {

@@ -5,34 +5,36 @@ constructor(tableAgenda, tableInfo) {
 this._tableAgenda = tableAgenda;
 this._tableInfo = tableInfo;
 this._numPersonas = 0;
+//lugaes del taller
+this._space = 0
+this._nospace = 0
 //para la localstarage de taller "participantes"
-this._taller = 0;
-this._contador = 0;
+this._nTaller = 0;
+//this._contador = 0;
 
 this._participantes= [];
 
-//localStorage.removeItem("parti");
 this._initTables();
 }
+//localStorage.removeItem("parti");
 _initTables() {
     //traer el localstorage "participantes" del otro jscrip
-    let lstaller = JSON.parse(localStorage.getItem("participantes"));
-if (lstaller === null) {
-    return;
-}
+    let lstaller = JSON.parse(localStorage.getItem("nomTaller"));
+    lstaller.forEach((t,index)=>{
+        this._nTaller = t.nameT;
+        this._space = Number(t.capacidad);
+    })
 //busca el nombre del taller
 lstaller.forEach((e, index) => {
-this._taller=  e.name; });
+this._nameTaller = e.nameT; });
 
 let lsPeople = JSON.parse(localStorage.getItem("parti"));
 if (lsPeople === null) {
     return;
 }
 lsPeople.forEach((e, index) => {
-    
     e.cumpleaños = new Date(e.cumpleaños);
     this._addToTable(new People(e));
-    
 });
 }
 _cancelEdit(row, people){  
@@ -85,7 +87,7 @@ btnSave.addEventListener("click",()=>{
     let newParticipante = {
     name : iName.value,
     email : iEmail.value,
-    birthday : iBirthday.value
+    cumpleaños : iBirthday.value
     };
     this._saveEdit(row, people, newParticipante);
 })
@@ -123,7 +125,7 @@ row.cells[4].appendChild(btnDelete);
 }
 
 _addToTable(people) {
-if(this._taller === people.taller || this._contador === 0 ){
+if(this._nameTaller === people.taller || this._contador === 0 ){
     this._contador++;
 let row = this._tableAgenda.insertRow(-1);
 //En la tabla grande 
@@ -149,7 +151,7 @@ this._numPersonas++; // this._numPersonas = this._numPersonas + 1
 this._tableInfo.rows[0].cells[1].innerHTML = this._numPersonas;
 
 let objPersonas = {
-    taller: this._taller,
+    taller : this._nameTaller,
     name: people.name,
     cumpleaños: people.cumpleaños,
     email: people.email

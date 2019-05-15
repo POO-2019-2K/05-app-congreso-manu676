@@ -13,7 +13,7 @@ document.querySelector("#btnAdd").addEventListener("click", () => {
 
     if (form.checkValidity() === true) {
     let ID = document.querySelector("#ID").value;
-    let name = document.querySelector("#name").value;
+    let nameT = document.querySelector("#name").value;
     let fechaInicial = document.querySelector("#fechaI").value;
     fechaInicial = fechaInicial.split("-");
 
@@ -29,7 +29,7 @@ document.querySelector("#btnAdd").addEventListener("click", () => {
 
     let objCourses = {
         ID: ID,
-        name: name,
+        nameT : nameT,
         fechaInicio: fechaInicio,
         fechaFin: fechaFin,
         capacidad: capacidad,
