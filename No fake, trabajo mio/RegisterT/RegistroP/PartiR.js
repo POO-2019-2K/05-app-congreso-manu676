@@ -1,5 +1,6 @@
 export default class People {
     constructor(people) {
+    this._id =people.id;
     this._name = people.name.toUpperCase();
     this._cumpleaños = new Date (people.cumpleaños);
     this._email= people.email;
@@ -17,6 +18,12 @@ export default class People {
         "Nov",
         "Dic"
     ];
+}
+get id(){
+    return this._id;
+}
+set id(idTaller){
+    this._id = idTaller;
 }
 get name(){
     return this._name;

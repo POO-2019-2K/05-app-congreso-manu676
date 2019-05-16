@@ -168,15 +168,15 @@ btnInPerson.type = "button";
 btnInPerson.value = "Ingresar Part.";
 btnInPerson.className = "btn btn-warning";
 btnInPerson.addEventListener("click", ()=>{ 
-    //localStorage.setItem("idTaller", row.cells[0].innerHTML);
-    //localStorage.setItem("nTaller", row.cells[1].innerHTML);
+    localStorage.setItem("idTaller", row.cells[0].innerHTML);
+    localStorage.setItem("capacidad", row.cells[4].innerHTML);
     //this._cleaner();
-    let objPar = {
+    /*let objPar = {
         nameT: courses.nameT,
         capacidad : courses.capacidad,
     };
     this._nomTaller.push(objPar);
-    localStorage.setItem("nomTaller", JSON.stringify(this._nomTaller));
+    localStorage.setItem("nomTaller", JSON.stringify(this._nomTaller));*/
     window.location.href='RegistroP/RegistroParticipantes.html';
 })
 row.cells[7].innerHTML = "";

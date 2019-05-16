@@ -8,8 +8,8 @@ this._tableAgenda = tableAgenda;
 this._tableInfo = tableInfo;
 this._numPersonas = 0;
 //lugaes del taller
-this._space = 0
-this._lugaresO = 0
+/*this._space = 0
+this._lugaresO = 0*/
 //para la localstarage de taller "participantes"
 this._nTaller = 0;
 //this._contador = 0;
@@ -17,11 +17,12 @@ this._nTaller = 0;
 this._participantes= [];
 
 this._initTables();
-}
 //localStorage.removeItem("parti");
+}
+
 _initTables() {
     //traer el localstorage "participantes" del otro jscrip
-    let lstaller = JSON.parse(localStorage.getItem("nomTaller"));
+    /*let lstaller = JSON.parse(localStorage.getItem("nomTaller"));
     lstaller.forEach((ta,index)=>{
         this._nTaller = ta.nameT;
         this._space = Number(ta.capacidad);
@@ -29,7 +30,8 @@ _initTables() {
 //busca el nombre del taller
 lstaller.forEach((e, index) => {
 this._nameTaller = e.nameT; });
-
+*/
+this._tableAgenda.innerHTML= "";
 let lsPeople = JSON.parse(localStorage.getItem("parti"));
 if (lsPeople === null) {
     return;
@@ -127,8 +129,14 @@ row.cells[4].appendChild(btnDelete);
 }
 
 _addToTable(people) {
-if(this._nameTaller === people.taller || this._contador === 0 ){
-    this._contador++;
+/*if(this._nameTaller === people.taller || this._contador === 0 ){
+this._contador++;*/
+let idTaller = localStorage.getItem("idTaller");
+console.log(localStorage.getItem("idTaller"));
+let capacidad = localStorage.getItem("capacidad");
+console.log(localStorage.getItem("capacidad"));
+if(people.id === idTaller){
+
 let row = this._tableAgenda.insertRow(-1);
 //En la tabla grande 
 let cellName = row.insertCell(0);
@@ -141,19 +149,17 @@ cellName.innerHTML = people.name;
 cellEmail.innerHTML = people.email;
 cellCumpleaños.innerHTML = people.getAgeAsString();
 
-
-
 //llamar a los botones
 this._addEditDeleteToRow(row, people);
-
-
+}
+console.log(this._participantes);
 
 this._numPersonas++; // this._numPersonas = this._numPersonas + 1
 
 this._tableInfo.rows[0].cells[1].innerHTML = this._numPersonas;
 
 let objPersonas = {
-    taller : this._nameTaller,
+    id : people.id,
     name: people.name,
     cumpleaños: people.cumpleaños,
     email: people.email
@@ -161,8 +167,7 @@ let objPersonas = {
 
 this._participantes.push(objPersonas);
 }
-return;
-}
+//return;}
 
 
 _findEmail(email){//encontrar el correo
@@ -188,6 +193,8 @@ if (found >= 0){
     });
     return;
 }
+let idTaller = localStorage.getItem("idTaller");
+people.id = idTaller;
 this._addToTable(people);
 localStorage.setItem("parti", JSON.stringify(this._participantes));
 }

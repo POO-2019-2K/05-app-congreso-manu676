@@ -3,8 +3,6 @@ import People from "./PartiR.js";
 
 class Main {
 constructor() {
-    console.log(localStorage.getItem("idTaller"));
-    console.log(localStorage.getItem("nTaller"));
 let agenda = new RegisterP(
     document.querySelector("#agenda"),
     document.querySelector("#info")
