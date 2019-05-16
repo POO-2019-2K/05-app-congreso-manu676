@@ -7,12 +7,6 @@ constructor(tableAgenda, tableInfo) {
 this._tableAgenda = tableAgenda;
 this._tableInfo = tableInfo;
 this._numPersonas = 0;
-//lugaes del taller
-/*this._space = 0
-this._lugaresO = 0*/
-//para la localstarage de taller "participantes"
-//this._nTaller = 0;
-//this._contador = 0;
 
 this._participantes= [];
 
@@ -133,11 +127,8 @@ row.cells[4].appendChild(btnDelete);
 }
 
 _addToTable(people) {
-/*if(this._nameTaller === people.taller || this._contador === 0 ){
-this._contador++;*/
 let idTaller = localStorage.getItem("idTaller");
 console.log(localStorage.getItem("idTaller"));
-//let capacidad = localStorage.getItem("capacidad"); console.log(localStorage.getItem("capacidad"));
 if(people.id === idTaller){
 
 let row = this._tableAgenda.insertRow(-1);
@@ -201,6 +192,7 @@ if (found >= 0){
     });
     return;
 }
+let capacity = localStorage.getItem("capacity");
 let idTaller = localStorage.getItem("idTaller");
 people.id = idTaller;
 this._addToTable(people);

@@ -5,15 +5,10 @@ constructor(tableAgenda, tableInfo) {
 this._tableAgenda = tableAgenda;
 this._tableInfo = tableInfo;
 this._numTalleres = 0;
-//para la capacidad de los talleres
-//this._lugares = 0;
-//this._lugaresO = 0;
 this._lugaresD = 0;
 
 //array pra localstorage "Talleres"
 this._talleres= [];
-//array para enviar a localstorage "nomTaller"
-this._nomTaller=[];
 //localStorage.removeItem("Talleres");
 this._initTables();
 
@@ -33,6 +28,7 @@ lsTalleres.forEach((ta,index) => {
     this._addToTable(new Courses(ta));
 });
 }
+//cancelar la edicion
 _cancelEdit(row, courses){
 row.cells[0].innerHTML = "";
 row.cells[0].innerHTML = courses.ID; 
@@ -44,10 +40,8 @@ row.cells[3].innerHTML = "";
 row.cells[3].innerHTML= courses.getFechaFinalAsString();
 row.cells[4].innerHTML = "";
 row.cells[4].innerHTML= this._lugaresD
-/*row.cells[5].innerHTML = "";
-row.cells[5].innerHTML= this._lugaresO*/
-row.cells[6].innerHTML = "";
-row.cells[6].innerHTML = courses.duracion;
+row.cells[5].innerHTML = "";
+row.cells[5].innerHTML = courses.duracion;
 
 this._addEditDeleteToRow(row, courses);
 }
@@ -133,12 +127,6 @@ btnCancel.addEventListener("click", () =>{
 })  
 row.cells[8].innerHTML= "";
 }  
-/*_cleaner()
-{
-localStorage.removeItem("nomTaller");
-console.log("nomTaller");
-}*/
-//botones de editar, eliminar y agregar participante
 _addEditDeleteToRow(row, courses){
 let btnEdit = document.createElement("input");
 btnEdit.type = "button";
@@ -162,13 +150,6 @@ btnInPerson.className = "btn btn-warning";
 btnInPerson.addEventListener("click", ()=>{ 
     localStorage.setItem("idTaller", row.cells[0].innerHTML);
     localStorage.setItem("capacidad", row.cells[4].innerHTML);
-    //this._cleaner();
-    /*let objPar = {
-        nameT: courses.nameT,
-        capacidad : courses.capacidad,
-    };
-    this._nomTaller.push(objPar);
-    localStorage.setItem("nomTaller", JSON.stringify(this._nomTaller));*/
     window.location.href='RegistroP/RegistroParticipantes.html';
 })
 row.cells[6].innerHTML = "";
@@ -180,13 +161,7 @@ row.cells[8].appendChild(btnInPerson);
 }
 
 _addToTable(courses) {
-/*let numPersonas = localStorage.getItem("numPersonas");
-console.log(numPersonas);
-if(!numPersonas){
-    numPersonas = localStorage.getItem("numPersonas");
-}*/
-//Calcular lugares
-//console.log(this._lugaresO);
+
 this._lugaresD = Number(courses.capacidad);
 console.log(this._lugaresD);
 
@@ -198,7 +173,6 @@ let cellNameT = row.insertCell(1);
 let cellFechaInicio = row.insertCell(2);
 let cellfechaFin = row.insertCell(3);
 let cellCapacidad = row.insertCell(4);
-//let cellLugaresO = row.insertCell(5);
 let cellDuracion= row.insertCell(5);
 row.insertCell(6);
 row.insertCell(7);
