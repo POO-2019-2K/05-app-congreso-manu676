@@ -1,5 +1,7 @@
 import People from "./PartiR.js";
-
+/*if (!x){
+    x=0
+}*/
 export default class RegisterP {
 constructor(tableAgenda, tableInfo) {
 this._tableAgenda = tableAgenda;
@@ -7,7 +9,7 @@ this._tableInfo = tableInfo;
 this._numPersonas = 0;
 //lugaes del taller
 this._space = 0
-this._nospace = 0
+this._lugaresO = 0
 //para la localstarage de taller "participantes"
 this._nTaller = 0;
 //this._contador = 0;
@@ -20,9 +22,9 @@ this._initTables();
 _initTables() {
     //traer el localstorage "participantes" del otro jscrip
     let lstaller = JSON.parse(localStorage.getItem("nomTaller"));
-    lstaller.forEach((t,index)=>{
-        this._nTaller = t.nameT;
-        this._space = Number(t.capacidad);
+    lstaller.forEach((ta,index)=>{
+        this._nTaller = ta.nameT;
+        this._space = Number(ta.capacidad);
     })
 //busca el nombre del taller
 lstaller.forEach((e, index) => {
