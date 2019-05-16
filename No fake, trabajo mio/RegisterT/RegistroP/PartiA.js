@@ -11,7 +11,7 @@ this._numPersonas = 0;
 /*this._space = 0
 this._lugaresO = 0*/
 //para la localstarage de taller "participantes"
-this._nTaller = 0;
+//this._nTaller = 0;
 //this._contador = 0;
 
 this._participantes= [];
@@ -21,25 +21,26 @@ this._initTables();
 }
 
 _initTables() {
-    //traer el localstorage "participantes" del otro jscrip
-    /*let lstaller = JSON.parse(localStorage.getItem("nomTaller"));
-    lstaller.forEach((ta,index)=>{
-        this._nTaller = ta.nameT;
-        this._space = Number(ta.capacidad);
-    })
-//busca el nombre del taller
-lstaller.forEach((e, index) => {
-this._nameTaller = e.nameT; });
-*/
 this._tableAgenda.innerHTML= "";
 let lsPeople = JSON.parse(localStorage.getItem("parti"));
+console.log(lsPeople);
 if (lsPeople === null) {
     return;
 }
-lsPeople.forEach((e, index) => {
+lsPeople.forEach((e, index) => { 
     e.cumpleaños = new Date(e.cumpleaños);
     this._addToTable(new People(e));
 });
+}
+_delete(row,people){
+    for(let i = 0; i < this._participantes.length;i++){
+        if (people.email === this._participantes[i].email){
+            this._participantes.splice(i,1);
+    break}
+    }
+    console.log(this._participantes);
+    row.innerHTML= "";
+    localStorage.setItem("parti", JSON.stringify(this._participantes));
 }
 _cancelEdit(row, people){  
     row.cells[0].innerHTML = people.name;
@@ -52,7 +53,7 @@ _cancelEdit(row, people){
 //metodo para guardar
 _saveEdit(row, people, newParticipante){
     //Buscar su ubicación 
-    let pos = this._findEmail(people.email);
+    let pos = this._findID(people.id);
     this._participantes[pos] = newParticipante;
     localStorage.setItem("parti", JSON.stringify(this._participantes));
     
@@ -123,6 +124,9 @@ let btnDelete = document.createElement("input");
 btnDelete.type = "button";
 btnDelete.value = "Eliminar";
 btnDelete.className = "btn btn-danger";
+btnDelete.addEventListener("click",()=>{
+    this._delete(row,people);
+})
 
 row.cells[3].appendChild(btnEdit);
 row.cells[4].appendChild(btnDelete);
@@ -133,8 +137,7 @@ _addToTable(people) {
 this._contador++;*/
 let idTaller = localStorage.getItem("idTaller");
 console.log(localStorage.getItem("idTaller"));
-let capacidad = localStorage.getItem("capacidad");
-console.log(localStorage.getItem("capacidad"));
+//let capacidad = localStorage.getItem("capacidad"); console.log(localStorage.getItem("capacidad"));
 if(people.id === idTaller){
 
 let row = this._tableAgenda.insertRow(-1);
@@ -148,13 +151,18 @@ row.insertCell(4);
 cellName.innerHTML = people.name;
 cellEmail.innerHTML = people.email;
 cellCumpleaños.innerHTML = people.getAgeAsString();
-
+this._numPersonas++; // this._numPersonas = this._numPersonas + 1
+let Num =(localStorage.setItem("numPersonas", this._numPersonas.value));
+if(!Num){
+    Num = this._numPersonas;
+}
+console.log(Num);
 //llamar a los botones
 this._addEditDeleteToRow(row, people);
 }
 console.log(this._participantes);
 
-this._numPersonas++; // this._numPersonas = this._numPersonas + 1
+
 
 this._tableInfo.rows[0].cells[1].innerHTML = this._numPersonas;
 
@@ -170,11 +178,11 @@ this._participantes.push(objPersonas);
 //return;}
 
 
-_findEmail(email){//encontrar el correo
+_findID(id){//encontrar el correo
 let found = -1 
 
 this._participantes.forEach((e, index)=>{
-    if(e.email === email)
+    if(e.id === id)
     {
     found = index;
     return;
@@ -184,7 +192,7 @@ return found;
 }
 
 addPeople(people) {
-let found = this._findEmail(people.email);
+let found = this._findID(people.id);
 if (found >= 0){
     swal.fire({
     type: "error",
