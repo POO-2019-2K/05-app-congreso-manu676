@@ -1,5 +1,6 @@
- # Ejercicio 5 El Congreso [![Codacy Badge](https://api.codacy.com/project/badge/Grade/b18f5dffbbf14ff3830bb85dad302c89)](https://www.codacy.com/app/manu676/05-app-congreso-manu676?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=POO-2019-2K/05-app-congreso-manu676&amp;utm_campaign=Badge_Grade)
+ # Ejercicio 5 El Congreso
  [![codebeat badge](https://codebeat.co/badges/0bccc283-4739-43c1-beb9-1b9c715a35d6)](https://codebeat.co/projects/github-com-poo-2019-2k-05-app-congreso-manu676-master)
+  [![Codacy Badge](https://api.codacy.com/project/badge/Grade/b18f5dffbbf14ff3830bb85dad302c89)](https://www.codacy.com/app/manu676/05-app-congreso-manu676?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=POO-2019-2K/05-app-congreso-manu676&amp;utm_campaign=Badge_Grade)
 
 ## Tiempo para realizar la actividad
 
